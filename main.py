@@ -1,9 +1,12 @@
+import datetime
+#import numpy as np
+import matplotlib.pyplot as plt
 import radar
 import medio
 import blanco
 import generador
-import datetime
 import detector
+import blancoCluter
 
 
 # DISCLAMER!!
@@ -19,27 +22,42 @@ def main():
 
     import math
     # parametros del generador de senales
-    amplitud = 0.2
+    amplitud = 1#0.2
     fase = 1
-    frecuencia = 20*math.pi
+    frecuencia = 5*math.pi #20
 
-    #TODO construir un nuevo genrador de senales
+    generador1 = generador.Generador(amplitud, fase, frecuencia)
+                        ### construir un nuevo genrador de senales
 
-    #TODO construir un detector
+    detector1 = detector.Detector()
+                        ### construir un detector
 
-    #TODO construir un nuevo radar
-
+    radar1 = radar.Radar(generador1, detector1) ### construir un nuevo radar
 
     # parametros para un blanco
-    amplitud_de_frecuencia_del_blanco = amplitud + 100
+    amplitud_de_frecuencia_del_blanco = 0.14 #amplitud + 100
     tiempo_inicial_del_blanco = datetime.datetime(2016, 3, 5, 2)
     tiempo_final_del_blanco = datetime.datetime(2016, 3, 5, 4)
-    #TODO contruir un nuevo blanco
+    blanco1 = blanco.Blanco(amplitud_de_frecuencia_del_blanco,\
+        tiempo_inicial_del_blanco,\
+        tiempo_final_del_blanco)  #TODO contruir un nuevo blanco
+    blanco2 = blanco.Blanco(0*amplitud_de_frecuencia_del_blanco,\
+        tiempo_inicial_del_blanco,\
+        tiempo_final_del_blanco)  #TODO contruir un nuevo blanco
+    blanco3 = blancoCluter.Blancocluter(amplitud_de_frecuencia_del_blanco,\
+        tiempo_inicial,\
+        tiempo_final)  #TODO contruir un nuevo blanco
 
 
-    #TODO contruir un medio
+    medio1 = medio.Medio([blanco3])  #TODO contruir un medio
 
-    #TODO construir un radar
+    [deteccion,senal_inicial,senal_final] = radar1.detectar(medio1, tiempo_inicial, tiempo_final)  #TODO construir un radar
+    if deteccion:
+        print('Se detecta una senal.')
+    else:
+        print('No se detecta una senal.')
+
+    radar1.plotear_senal(senal_inicial,senal_final)
 
 if __name__ == "__main__":
     main()

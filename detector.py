@@ -5,6 +5,6 @@ class Detector(object):
         pass
 
     def detectar(self, senal):
-
-        #TODO: Completar
-        pass
+        deteccion = False
+        if max(senal)>0.1 : deteccion = True
+        return deteccion
