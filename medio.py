@@ -1,3 +1,5 @@
+import numpy as np
+
 class Medio(object):
 
     def __init__(self, blancos):
@@ -7,7 +9,6 @@ class Medio(object):
         """
         Los blancos en el medio reflejan la senal
         """
-        import numpy as np
         senal_reflejada = np.zeros(len(una_senal))
         amplitud_medio = 0.6
         for i in self.blancos:

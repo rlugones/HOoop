@@ -1,15 +1,16 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+
 """
 Define el similador del Radar
 """
 
-
 class Radar(object):
-
 
     def __init__(self, generador, detector):
         self.generador = generador
         self.detector = detector
-
 
     def detectar(self, medio, tiempo_inicial, tiempo_final):
         """
@@ -23,10 +24,8 @@ class Radar(object):
 
     def plotear_senal(self, senal_inicial, senal_final):
         """
-        Plotea la senal
+        Plotea las senales generada y recibida
         """
-        import matplotlib.pyplot as plt
-        import numpy as np
         x=np.arange(len(senal_inicial))
         f=plt.figure()
         ax=f.add_subplot(111)

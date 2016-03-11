@@ -22,9 +22,8 @@ class Generador(object):
 
         muestras = np.arange(cantidad_muestras)
         ruido_blanco = np.random.normal(0,1,cantidad_muestras) * self.amplitud/10
-        #TODO agregar un ruido blanco a la senal
 
-        ret = self.amplitud*np.sin(2*(1/self.frecuencia)*muestras+self.fase)+\
+        ret = self.amplitud*np.sin(2*(1/self.frecuencia)*muestras+self.fase) + \
                 ruido_blanco
 
         return ret
